@@ -1,0 +1,32 @@
+filters:
+  and:
+    - '!file.inFolder("templates")'
+    - or:
+        - 'note.type == link("Project")'
+        - 'note.type == "[[Project]]"'
+views:
+  - type: table
+    name: Active
+    filters:
+      and:
+        - 'note.status != "done"'
+    order:
+      - file.name
+      - status
+      - due
+      - drives
+      - updated
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: All
+    order:
+      - file.name
+      - status
+      - due
+      - drives
+      - updated
+    sort:
+      - property: date
+        direction: DESC

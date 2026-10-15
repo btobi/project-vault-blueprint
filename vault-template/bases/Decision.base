@@ -1,0 +1,17 @@
+filters:
+  and:
+    - '!file.inFolder("templates")'
+    - or:
+        - 'note.type == link("Decision")'
+        - 'note.type == "[[Decision]]"'
+views:
+  - type: table
+    name: All
+    order:
+      - file.name
+      - date
+      - updated
+      - status
+    sort:
+      - property: date
+        direction: DESC

@@ -1,0 +1,17 @@
+filters:
+  and:
+    - '!file.inFolder("templates")'
+    - or:
+        - 'note.type == link("Person")'
+        - 'note.type == "[[Person]]"'
+views:
+  - type: table
+    name: All
+    order:
+      - file.name
+      - org
+      - role
+      - email
+    sort:
+      - property: date
+        direction: DESC

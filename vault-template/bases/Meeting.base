@@ -1,0 +1,16 @@
+filters:
+  and:
+    - '!file.inFolder("templates")'
+    - or:
+        - 'note.type == link("Meeting")'
+        - 'note.type == "[[Meeting]]"'
+views:
+  - type: table
+    name: All
+    order:
+      - file.name
+      - date
+      - persons
+    sort:
+      - property: date
+        direction: DESC

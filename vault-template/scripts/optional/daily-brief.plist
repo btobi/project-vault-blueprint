@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  macOS LaunchAgent template: run the daily brief on weekday mornings.
+
+  Install:
+    1. cp daily-brief.plist ~/Library/LaunchAgents/com.example.vault.daily-brief.plist
+    2. Edit the copy: replace every __VAULT_DIR__ with the absolute vault path
+       (and rename the Label / file if you run several vaults).
+    3. mkdir -p __VAULT_DIR__/.claude   (log directory, use the real path)
+    4. launchctl load ~/Library/LaunchAgents/com.example.vault.daily-brief.plist
+    5. Test: launchctl start com.example.vault.daily-brief
+  Uninstall: launchctl unload ~/Library/LaunchAgents/com.example.vault.daily-brief.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.example.vault.daily-brief</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>__VAULT_DIR__/scripts/optional/daily-brief.sh</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+		<dict><key>Weekday</key><integer>2</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+		<dict><key>Weekday</key><integer>3</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+		<dict><key>Weekday</key><integer>4</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+		<dict><key>Weekday</key><integer>5</integer><key>Hour</key><integer>8</integer><key>Minute</key><integer>30</integer></dict>
+	</array>
+	<key>StandardOutPath</key>
+	<string>__VAULT_DIR__/.claude/daily-brief.out.log</string>
+	<key>StandardErrorPath</key>
+	<string>__VAULT_DIR__/.claude/daily-brief.err.log</string>
+</dict>
+</plist>
